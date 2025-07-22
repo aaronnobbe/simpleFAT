@@ -1,0 +1,61 @@
+CS314 Project 3 - simpleFAT File System
+Aaron Nobbe
+
+
+Project Overview
+
+This simple FAT-like file system allows you to create a file system inside a single file, add and remove files,
+extract them, add directories, and list everything in the file system. The attempt here was to maintain a
+simple and manageable file system to understand block management.
+
+
+Directory Handling
+
+Directory entries are stored together in a reserved root directory area after the FAT. They are not managed
+using the FAT, and I did not use one block per directory entry. The FAT only manages file data blocks,
+which keeps things straightforward for adding, listing, and removing entries.
+
+
+File System Structure
+
+FAT: An array of unsigned short entries where 0 = free, USHRT_MAX = end of file, and other values point to the next block.
+
+Block size: 512 bytes.
+
+Directory entries: Store the file/dir name, is_dir flag, size, and first block index.
+
+Layout: FAT area → root directory area → data blocks.
+
+
+Commands Implemented
+
+-c : Create and format the file system.
+
+-d : Add a directory entry.
+
+-a : Add a file, writing data to blocks while updating FAT and the directory.
+
+-l : List the files and directories.
+
+-e : Extract a file to stdout for checking.
+
+-r : Remove a file and free its blocks.
+
+
+Testing Process
+
+Created a new file system.
+
+Added a directory.
+
+Added a file and listed contents.
+
+Extracted the file and verified correctness with diff.
+
+Removed the file and confirmed removal by listing again.
+
+
+Conclusion:
+
+This project helped me understand how a simple FAT-based file system manages blocks and directory entries while keeping everything manageable enough to test and degub.
+

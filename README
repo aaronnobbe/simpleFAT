@@ -1,0 +1,70 @@
+//readme file
+
+Project: simpleFAT - CS314 Project 3
+Aaron Nobbe
+
+Description:
+
+This project implements a simple FAT-like file system inside a single file, which allows one to create, add files, remove files, extract files, add directories, and list the contents of your file system.
+
+Compiling:
+
+In the option2 directory, run:
+
+make
+
+In order to produce the executable simplefat.
+
+
+How to Use:
+
+
+Create a new file system:
+
+./simplefat -f myfs.simpleFAT -c
+
+
+Add a directory:
+
+./simplefat -f myfs.simpleFAT -d dirname
+
+
+Add a file:
+
+./simplefat -f myfs.simpleFAT -a filename.txt
+
+
+List contents:
+
+./simplefat -f myfs.simpleFAT -l
+
+
+Extract a file:
+
+./simplefat -f myfs.simpleFAT -e filename.txt > extracted.txt
+
+
+Use diff to verify the extracted file matches the original:
+
+diff filename.txt extracted.txt
+
+
+Remove a file:
+
+./simplefat -f myfs.simpleFAT -r filename.txt
+
+
+List contents again (to confirm removal):
+
+./simplefat -f myfs.simpleFAT -l
+
+
+Testing:
+
+Run the above commands in order. Use diff filename.txt extracted.txt to confirm extraction was done correctly and also verify additions and removals.
+
+To clean use:
+
+make clean
+
+This will remove simplefat (implemented in makefile)
